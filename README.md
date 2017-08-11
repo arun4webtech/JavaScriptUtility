@@ -5,8 +5,9 @@ JavaScript Utility Functions
 ==================
 loaded URL : https://www.google.co.in/search?query=github+arun4webtech&gsl=psy-ab.3
       
-      getParameterByName("query") => "github arun4webtech"
-      getParameterByName("gsl") => "psy-ab.3"
+      getURLParameter("query") => "github arun4webtech"
+      getURLParameter("gsl") => "psy-ab.3"
+      getURLParameter("input",parent.location.href) => "data from parent window"
 
 #Get IE browser version 
 ========================
