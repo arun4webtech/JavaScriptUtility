@@ -28,3 +28,14 @@ function isIE()
 		rv = false;
 	return rv;
 }
+
+function loadScript(src,callback)
+{
+	var head = document.getElementsByTagName("head")
+	var script = document.createElement("script")
+	script.src = src
+	head[0].appendChild(script)
+	
+	if(callback)
+		callback();
+}
