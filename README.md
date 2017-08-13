@@ -13,3 +13,8 @@ loaded URL : https://www.google.co.in/search?query=github+arun4webtech&gsl=psy-a
 ========================
     isIE() => 8 (in IE 8)
     isIE() => false (in chrome)
+
+#Injecting script file 
+======================
+    function callbackFunction(){console.log("JavaScriptUtility script loaded")}
+    loadScript("https://raw.githubusercontent.com/arun4webtech/JavaScriptUtility/master/JSutility.js",callbackFunction)
