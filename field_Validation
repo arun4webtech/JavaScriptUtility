@@ -148,3 +148,20 @@ function onlyAlphanumericAndCaps(inputField, length)
         return (_ret); 
     }
 }
+
+function onlyValidLength(inputField, length)
+{
+	return function()
+	{
+		var _ret = true;
+		if(inputField && length)
+		{
+			var keyEntry = window.event.keyCode;
+			if(inputField.getValue().length>=length)
+			{
+			   _ret = false;
+			} 			
+		}
+		return (_ret); 
+	}
+}
