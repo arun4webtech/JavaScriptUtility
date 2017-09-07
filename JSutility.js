@@ -120,6 +120,47 @@ function changeLoader(msg)
 
 
 
+
+
+/* --------------------------------------------------------
+                            Jquery Full Screen page
+----------------------------------------------------------*/
+/** include this html lines in HTML page **/
+/*
+<div id="dialog" title="Basic dialog" style="overflow-x: hidden;">
+  	<iframe id="pageURI" src="" style="width:100%;height:100%;border:none;position: fixed;" scrolling="auto"></iframe>
+</div>
+*/
+
+function fullScreenJDialog(url) 
+{
+	$("#dialog").dialog();
+	$(".ui-dialog-titlebar").hide()
+		
+	var id = "dialog";
+	$("#"+id).parent().css("left","0px")		// dialog parent [dialog whole body]
+	$("#"+id).parent().css("top","0px")
+	$("#"+id).parent().css("width","100%")
+	$("#"+id).parent().css("height","100%")
+	$("#"+id).css("height","98%")				// dialog body part
+	$("#"+id).css("padding","0px")
+
+	$("#ui-id-1").parent().css("padding","0px")	// modal header 
+	var JModalHeaderContent = '<span id="ui-id-1" style="margin-left: 12px;" class="ui-dialog-title">Header Part hard code</span>';
+	JModalHeaderContent += '<span onclick="closeTaskModal()" class="glyphicon glyphicon-remove pull-right" style="top:5px;right:5px"></span>';
+	$("#ui-id-1").parent().html(JModalHeaderContent); // modal header content
+	
+	$("#pageURI").attr("src",url)
+}
+
+function closeTaskModal() {
+	$("#dialog").dialog( "close" );
+}
+
+
+
+
+
 /* --------------------------------------------------------
                             UTILITY
 ----------------------------------------------------------*/
