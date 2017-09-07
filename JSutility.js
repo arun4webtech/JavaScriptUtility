@@ -59,6 +59,7 @@ function loadScript(src,callback)
 
 function isIntNumber(inp)
 {
+	inp = inp+"";
 	return inp.match(/[^0-9]/g)==null;
 }
 
