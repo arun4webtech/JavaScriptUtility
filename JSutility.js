@@ -157,6 +157,35 @@ function closeTaskModal() {
 	$("#dialog").dialog( "close" );
 }
 
+function dateComparison(frmDt,toDt)
+{    
+    var dayFrm = parseInt(frmDt.split("/")[0]);
+    var monthFrm = parseInt(frmDt.split("/")[1]);
+    var yearFrm = parseInt(frmDt.split("/")[2]);
+    
+    var dayTo = parseInt(toDt.split("/")[0]);
+    var monthTo = parseInt(toDt.split("/")[1]);
+    var yearTo = parseInt(toDt.split("/")[2]);
+     
+    if(yearFrm < yearTo)
+        return true;
+	else if(yearFrm > yearTo)
+		return false;
+	else	//if(yearFrm == yearTo)
+    {
+        if(monthFrm < monthTo)
+            return true;
+        else if(monthFrm > monthTo)  
+            return false;
+		else //if(monthFrm == monthTo)
+        {
+          if(dayFrm <= dayTo)
+            return true; 
+		 else
+			return false;
+        }
+    }		
+}
 
 var util = {
 
