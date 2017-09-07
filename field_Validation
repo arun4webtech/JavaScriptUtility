@@ -165,3 +165,31 @@ function onlyValidLength(inputField, length)
 		return (_ret); 
 	}
 }
+
+ function onlyDigitsAndSpecialChars(inputField, length)
+{
+    return function() {
+        var returnValue = true;
+        if (inputField && length) {
+            var keyEntry = window.event.keyCode;
+
+            if (inputField.getValue().length >= length) 
+			{
+
+                if (keyEntry == 8) // backspace 
+                    returnValue = true;
+                else
+                    returnValue = false;
+            } 
+          else 
+     {
+
+                if (((keyEntry >= 0) && (keyEntry <= 64)) || ((keyEntry >= 48) && (keyEntry <= 57)))
+                    returnValue = true;
+                else returnValue = false;
+            }
+        }
+        return (returnValue);
+    
+}
+}
