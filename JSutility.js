@@ -57,6 +57,15 @@ function loadScript(src,callback)
 		callback();
 }
 
+function isIntNumber(inp)
+{
+	return inp.match(/[^0-9]/g)==null;
+}
+
+function isNumber(inp)
+{
+	return !isNaN(inp);
+}
 
 
 
