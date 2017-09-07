@@ -158,191 +158,46 @@ function closeTaskModal() {
 }
 
 
+var util = {
 
+	getURLParameter : function(name,url){
+		return getURLParameter(name,url)
+	},
+	
+	isIE : function(){
+		return isIE()
+	},
 
-
-/* --------------------------------------------------------
-                            UTILITY
-----------------------------------------------------------*/
-
-
-function onlyDigitsWithSlash(inputField, length)
-{
-    return function()
-    {
-	var _ret = true;
-        if(inputField && length)
-        {
-            if(inputField.getValue().length>=length)
-            {
-               _ret = false;
-            } 
-			else
-			{
-				if ((window.event.keyCode <= 46 || window.event.keyCode > 57) )
-				{
-					if(window.event.keyCode!=191){
-						window.event.keyCode = 0;
-						_ret = false;        
-					}    
-				}
-			}
-        }        
-	return (_ret); 
-    }
-}
-
-function onlyDigitsIE(inputField, length)
-{
-	return function()
-	{
-		var _ret = true;
-		if(inputField && length)
-		{
-			if(inputField.getValue().length>=length)
-			{
-				_ret = false;
-			}
-			else
-			{
-				var keyEntry = window.event.keyCode;
-				if((keyEntry>=48)&&(keyEntry<=57))
-					_ret  = true;
-				else
-					_ret = false;
-			}
-		}
-		return (_ret);
-	}
-}
-
-function onlyDigits(inputField, length)
-{
-	return function(evt)
-	{
-		var _ret = true;
-		var charCode = (evt.charCode) ? evt.charCode :((evt.keyCode) ? evt.keyCode :((evt.which) ? evt.which : 0));
-		if(charCode==8 || charCode==9)
-			return true;
-			
-		if(inputField && length){
-			if(inputField.getValue().length>=length)
-				_ret = false;
-			else if ((charCode < 48 || charCode > 57) )
-				_ret = false;
-		}
-		evt.returnValue = _ret;
-		return (_ret); 
-	}
-}
-
-function onlyAlphanumericIE(inputField, length)
-{
-	return function()
-	{
-		var _ret = true;
-		if(inputField && length)
-		{
-			if(inputField.getValue().length>=length)
-			{
-				_ret = false;
-			} 
-			else
-			{
-				var keyEntry = window.event.keyCode;
-				if(((keyEntry >= '65') && (keyEntry <= '90')) || ((keyEntry >= '97') && (keyEntry <= '122')) || ((keyEntry > '47') && (keyEntry < '58')))       
-				   return true;      
-				else        
-				   return false;     
-  		   }
-		}
-		return (_ret); 
-	}
-}
-
-function onlyAlphanumeric(inputField, length)
-{
-	return function(evt)
-	{
-		var _ret = true;
-		var charCode = (evt.charCode) ? evt.charCode :((evt.keyCode) ? evt.keyCode :((evt.which) ? evt.which : 0));
-		if(charCode==8 || charCode==9)
-			return true;
-		if(inputField && length){
-			if(inputField.getValue().length>=length)
-				_ret = false;
-			else if(!(((charCode >= '65') && (charCode <= '90')) || ((charCode >= '97') && (charCode <= '122')) || (charCode > '47' && charCode < '58')) )
-				_ret = false;
-		}
-		evt.returnValue = _ret;
-		return (_ret); 
-	}
-}
-
-function onlyAlphanumericAndCaps(inputField, length)
-{
-    return function()
-    {
-        var _ret = true;
-        if(inputField && length)
-        {
-            if(inputField.getValue().length>=length)
-            {
-               _ret = false;
-            } 
-			else
-			{
-                var keyEntry = window.event.keyCode;
-				if(((keyEntry>= '65') && (keyEntry <= '90')) || ((keyEntry >= '97') && (keyEntry <= '122')))         
-				{
-				   if ((keyEntry > 0x60) && (keyEntry < 0x7B))
-						window.event.keyCode = keyEntry-0x20;
-					return true;
-				}
-				else if(keyEntry > 46 && keyEntry < 58)
-					return true;
-			   else
-			   {
-				   window.event.keyCode = 0;
-				   return false;     
-			   }
-            }
-        }           
-        return (_ret); 
-    }
-}
-
-
-
-
-
-
-function dateComparison(frmDt,toDt)
-{    
-    var dayFrm = parseInt(frmDt.split("/")[0]);
-    var monthFrm = parseInt(frmDt.split("/")[1]);
-    var yearFrm = parseInt(frmDt.split("/")[2]);
-    
-    var dayTo = parseInt(toDt.split("/")[0]);
-    var monthTo = parseInt(toDt.split("/")[1]);
-    var yearTo = parseInt(toDt.split("/")[2]);
-     
-    if(yearFrm < yearTo)
-        return true;
-	else if(yearFrm > yearTo)
-		return false;
-	else	//if(yearFrm == yearTo)
-    {
-        if(monthFrm < monthTo)
-            return true;
-        else if(monthFrm > monthTo)  
-            return false;
-		else //if(monthFrm == monthTo)
-        {
-          if(dayFrm <= dayTo)
-            return true; 
-		 else
-			return false;
-        }
-    }		
-}
+	loadScript : function(src,callback){
+		return loadScript(src,callback)
+	},
+	
+	  
+	isIntNumber : function(inp){
+		return isIntNumber(inp)
+	},
+	
+	isNumber : function(inp){
+		return isNumber(inp)
+	},
+	
+	/*Loader with stop control and changing msg inside*/
+	showLoader : function(msgText,theme,overlay){
+		showLoader(msgText,theme,overlay);
+	},
+	hideLoader : function(){
+		hideLoader()
+	},
+	changeLoader : function(msg){
+		changeLoader(msg)
+	},
+	
+	/*Jquery Full Screen page*/
+	fullScreenJDialog : function(url){fullScreenJDialog(url)},
+	closeTaskModal	  : function(url){closeTaskModal()},
+	
+	dateComparison : function(frmDt,toDt){
+		dateComparison(frmDt,toDt)
+	},
+	
+};
