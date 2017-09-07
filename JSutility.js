@@ -120,6 +120,87 @@ function onlyDigits(inputField, length)
 	}
 }
 
+function onlyAlphanumericIE(inputField, length)
+{
+	return function()
+	{
+		var _ret = true;
+		if(inputField && length)
+		{
+			if(inputField.getValue().length>=length)
+			{
+				_ret = false;
+			} 
+			else
+			{
+				var keyEntry = window.event.keyCode;
+				if(((keyEntry >= '65') && (keyEntry <= '90')) || ((keyEntry >= '97') && (keyEntry <= '122')) || ((keyEntry > '47') && (keyEntry < '58')))       
+				   return true;      
+				else        
+				   return false;     
+  		   }
+		}
+		return (_ret); 
+	}
+}
+
+function onlyAlphanumeric(inputField, length)
+{
+	return function(evt)
+	{
+		var _ret = true;
+		var charCode = (evt.charCode) ? evt.charCode :((evt.keyCode) ? evt.keyCode :((evt.which) ? evt.which : 0));
+		if(charCode==8 || charCode==9)
+			return true;
+		if(inputField && length){
+			if(inputField.getValue().length>=length)
+				_ret = false;
+			else if(!(((charCode >= '65') && (charCode <= '90')) || ((charCode >= '97') && (charCode <= '122')) || (charCode > '47' && charCode < '58')) )
+				_ret = false;
+		}
+		evt.returnValue = _ret;
+		return (_ret); 
+	}
+}
+
+function onlyAlphanumericAndCaps(inputField, length)
+{
+    return function()
+    {
+        var _ret = true;
+        if(inputField && length)
+        {
+            if(inputField.getValue().length>=length)
+            {
+               _ret = false;
+            } 
+			else
+			{
+                var keyEntry = window.event.keyCode;
+				if(((keyEntry>= '65') && (keyEntry <= '90')) || ((keyEntry >= '97') && (keyEntry <= '122')))         
+				{
+				   if ((keyEntry > 0x60) && (keyEntry < 0x7B))
+						window.event.keyCode = keyEntry-0x20;
+					return true;
+				}
+				else if(keyEntry > 46 && keyEntry < 58)
+					return true;
+			   else
+			   {
+				   window.event.keyCode = 0;
+				   return false;     
+			   }
+            }
+        }           
+        return (_ret); 
+    }
+}
+
+
+
+
+
+
 function dateComparison(frmDt,toDt)
 {    
     var dayFrm = parseInt(frmDt.split("/")[0]);
