@@ -67,6 +67,55 @@ function isNumber(inp)
 	return !isNaN(inp);
 }
 
+/* --------------------------------------------------------
+                            jquery mobile Loader
+----------------------------------------------------------*/
+function showLoader(msgText,theme,overlay)
+{
+	(theme === undefined)?theme = "b":(theme == "b")?theme = "b" : theme = "a";
+	(msgText == undefined)?msgText="Loading..":(msgText == "")?msgText="Loading...":msgText=msgText;
+	textVisible = true,
+	textonly = false;
+	html = "";
+
+	try{	
+	  $.mobile.loading( 'show', {
+		text: msgText,
+		textVisible: textVisible,
+		theme: theme,
+		textonly: textonly,
+		html: html
+		});
+
+		if(overlay == true){
+			$("body").prepend("<div class=\"overlay\"></div>");
+			$(".overlay").css({
+				"position": "absolute", 
+				"width": $(document).width(), 
+				"height": $(document).height(),
+				"z-index": 99999, 
+				"opacity": "0.5",
+				"background-color": "gray"
+			});
+		}		
+	}
+	catch(e){
+		alert("please include jquery.mobile-1.4.5.min.js " + e.description );
+		console.log("please include jquery.mobile-1.4.5.min.js");
+	}
+}
+
+function hideLoader()
+{
+	$.mobile.loading( "hide" );
+	$(".overlay").remove();
+}
+
+function changeLoader(msg)
+{
+	$(".ui-loader").find("h1").html(msg);
+	//showLoader("msg");	// showLoader function takes time for try catch and to complete function // dom completes faster
+}
 
 
 
